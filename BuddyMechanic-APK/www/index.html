@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1D4ED8">
+<title>BuddyMechanic</title>
+<style>
+:root{color-scheme:light;--bg:#F4F7FD;--card:#fff;--ink:#0F2A5C;--mut:#5A6B8C;--line:#E1E8F5;--blue:#1D4ED8;--bl:#EAF1FF;--or:#FF7A1A;--ol:#FFF0E3;--ord:#B45309;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink)}
+#app{max-width:430px;height:100%;margin:0 auto;display:flex;flex-direction:column;background:var(--bg)}
+main{flex:1;overflow-y:auto;padding:16px}
+button{font:inherit;border:0;cursor:pointer;color:inherit;background:none}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pri{width:100%;min-height:52px;border-radius:14px;background:var(--blue);color:#fff;font-weight:700;font-size:15px}
+.cta{width:100%;min-height:52px;border-radius:14px;background:var(--or);color:var(--ink);font-weight:800;font-size:15px}
+.sec{min-height:46px;padding:0 16px;border-radius:12px;background:var(--bl);color:var(--blue);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+h2{font-size:16px;margin:22px 0 10px}
+.hero{background:var(--blue);color:#fff;border-radius:22px;padding:18px}
+.q{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.q button{background:#fff;color:var(--ink);border-radius:14px;padding:10px 2px;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:78px}
+.ib{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--bl);color:var(--blue)}
+.ib.o{background:var(--ol);color:var(--ord)}
+.ib svg{width:22px;height:22px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 4px}
+.tab{white-space:nowrap;min-height:40px;padding:0 16px;border-radius:20px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:600;color:var(--mut)}
+.tab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 3px;font-size:11px;font-weight:600;text-align:center;min-height:96px;line-height:1.25}
+nav{display:flex;border-top:1px solid var(--line);background:#fff;padding-bottom:2px}
+nav button{flex:1;min-height:60px;font-size:11px;font-weight:600;color:var(--mut);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+nav button svg{width:22px;height:22px}nav button.on{color:var(--blue);font-weight:800}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.srch{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 12px;margin-top:14px}
+.srch svg{width:20px;height:20px;color:var(--mut)}
+input{width:100%;min-height:48px;border:0;outline:0;background:none;color:var(--ink);font-size:14px}
+.f{border:1px solid var(--line);border-radius:12px;background:#fff;padding:0 12px;margin-top:6px}
+label{font-size:12px;color:var(--mut);font-weight:600;display:block;margin-top:12px}
+small{color:var(--mut)}
+.tl>div{display:flex;gap:12px;align-items:center;padding:9px 0;font-size:14px;color:var(--mut)}
+.tl>div.d{color:var(--ink);font-weight:700}
+.dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none}.d .dot{background:var(--blue);border-color:var(--blue)}
+.pulse{width:96px;height:96px;border-radius:50%;background:var(--blue);margin:50px auto 24px;animation:p 1.3s infinite}
+@keyframes p{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.4);opacity:.1}}
+.stars button{font-size:32px;min-width:48px;min-height:48px;color:var(--line)}.stars button.on{color:var(--or)}
+.er{font-size:13px;min-height:18px;margin:8px 0;color:#B91C1C}.er.ok{color:#15803D}.f input:disabled{color:var(--mut)}.demo{background:var(--ol);border:1px solid #FFD9B8;border-radius:14px;padding:12px;margin-top:14px;font-size:13px}.logo{width:44px;height:44px;border-radius:13px;background:var(--blue);color:#fff;display:grid;place-items:center}.logo svg{width:26px;height:26px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.cc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:10px;min-height:128px}.cc b{font-size:14px}.cc small{font-size:12px;line-height:1.3}
+.sm{min-height:38px;padding:0 10px;font-size:12px;border-radius:10px}.act{display:flex;flex-direction:column;gap:6px}
+.map{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#EEF3FC}.map svg{display:block;width:100%;height:auto;fill:none}
+.ping{transform-box:fill-box;transform-origin:center;animation:pg 1.6s infinite}@keyframes pg{0%{transform:scale(.6);opacity:.6}100%{transform:scale(2.4);opacity:0}}
+select{width:100%;min-height:46px;border:0;outline:0;background:none;color:var(--ink);font-size:14px}.wp{background:var(--blue);border-radius:28px;height:290px;display:grid;place-items:center;position:relative;overflow:hidden;margin-top:22px}.wp .big{width:150px;height:150px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center}.wp .big svg{width:76px;height:76px;stroke-width:1.5}.wp i{position:absolute;border-radius:50%}.dots{display:flex;gap:6px;justify-content:center;margin:18px 0}.dots b{width:8px;height:8px;border-radius:4px;background:var(--line)}.dots b.on{width:24px;background:var(--blue)}</style></head>
+<body><div id="app"><main id="v"></main><nav id="nav"></nav></div>
+<script>
+var P={
+wrench:"M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.5 2.5-2.2-.5-.5-2.2z",
+tyre:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM12 3v6.5M12 14.5V21M3.6 8.5l5 2.5M15.4 13l5 2.5M3.6 15.5l5-2.5M15.4 11l5-2.5",
+battery:"M3 8h16v11H3zM7 8V5h3v3M14 8V5h3v3M7 13.5h3M14 13.5h3M15.5 12v3",
+fuel:"M5 21V4h9v17M3 21h13M5 9h9M14 8l3 2v7a1.5 1.5 0 0 0 3 0V9l-3-3",
+tow:"M2 17V7h11v10M13 10h4l3 3v4h-7M7 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM17 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4z",
+bolt:"M13 2L4 14h7l-1 8 9-12h-7z",
+snow:"M12 2v20M4 7l16 10M20 7L4 17",
+drop:"M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z",
+car:"M3 15l1.5-5a2 2 0 0 1 1.9-1.5h11.2a2 2 0 0 1 1.9 1.5L21 15v4h-3v-2H6v2H3zM6.5 12.5h.01M17.5 12.5h.01",
+key:"M8 14a4 4 0 1 1 3.5-6H21v3h-2v2h-2v-2h-5.5A4 4 0 0 1 8 14z",
+tint:"M3 18h18M5 18l2-9h10l2 9M9 9l-1 9M15 9l1 9",
+spark:"M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z",
+check:"M9 4h6v3H9zM7 5H5v16h14V5h-2M8.5 14l2.5 2.5 4.5-5",
+phone:"M7 2h10v20H7zM11 19h2",
+doc:"M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7",
+tag:"M3 12V4h8l10 10-8 8zM7.5 8.5h.01",
+cal:"M4 6h16v15H4zM4 10h16M8 3v4M16 3v4",
+gavel:"M14 4l6 6-3 3-6-6zM11 7L4 14l3 3 7-7M3 21h10",
+gear:"M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2",
+bike:"M5 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM5 16l4-7h5l3 7M9 9H7M14 9l1-3h3",
+plate:"M2 7h20v10H2zM6 12h.01M10 10v4M13 10v4M16 10v4",
+mtn:"M3 18l6-10 4 6 3-4 5 8z",
+pin:"M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12zM12 7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z",
+shield:"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM8.5 12l2.5 2.5 4.5-5",
+coin:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9 8h6M9 11h6M9 8c4 0 4 5 0 5l5 4",
+ship:"M3 17l2 4h14l2-4zM6 17V10h12v7M9 10V6h6v4",
+box:"M3 8l9-5 9 5v9l-9 5-9-5zM3 8l9 5 9-5M12 13v9",
+ok:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM8 12.5l3 3 5-6",
+bars:"M3 20h18M6 20v-6M11 20V9M16 20v-9M21 20V5",
+gem:"M6 4h12l4 6-10 11L2 10zM2 10h20",
+users:"M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2 20c0-3.5 3-6 7-6s7 2.5 7 6M17 5a3 3 0 0 1 0 6M19 14c2 .8 3 2.6 3 5",
+home:"M3 11l9-8 9 8v10h-6v-6H9v6H3z",list:"M5 4h14v16H5zM8 9h8M8 13h8M8 17h5",user:"M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 3.5-7 8-7s8 3 8 7",search:"M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5"};
+function ic(k,o){return '<span class="ib'+(o?' o':'')+'"><svg viewBox="0 0 24 24"><path d="'+P[k]+'"/></svg></span>'}
+function sv(k){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+P[k]+'"/></svg>'}
+var S=[["Mechanic","wrench","Emergency Roadside",300],["Puncture","tyre","Emergency Roadside",250],["Battery","battery","Emergency Roadside",400],["Fuel Delivery","fuel","Emergency Roadside",150],["Towing","tow","Emergency Roadside",800],["EV Charging","bolt","Emergency Roadside",350],
+["AC Service","snow","Repair & Maintenance",500],["Oil Change","drop","Repair & Maintenance",450],["Car Services","car","Car care",600],["Tyre & Wheel","tyre","Car care",300],["Key & Lock","key","Car care",250],["Tinting","tint","Car care",900],["Detailing","spark","Car care",700],["Inspection","check","Car care",500],["Mobile Service","phone","Car care",550],["Service Contract","doc","Car care",0],
+["Buy / Sell","tag","Buy, Sell & Rent",0],["Car Rental","cal","Buy, Sell & Rent",0],["Car Auction","gavel","Buy, Sell & Rent",0],["Spare Parts","gear","Car Care & Parts",0],["Bike Buy/Sell","bike","Buy, Sell & Rent",0],["Plate Numbers","plate","Buy, Sell & Rent",0],["4x4 Accessories","mtn","Car Care & Parts",0],["Vehicle Tracking","pin","Car Care & Parts",0],
+["Insurance","shield","Finance & Insurance",0],["Vehicle Loan","coin","Finance & Insurance",0],["Car Shipping","ship","Shipping & Paperwork",0],["Movers & Packers","box","Shipping & Paperwork",0],["RTA Passing","ok","Shipping & Paperwork",0],["Car Valuation","bars","Finance & Insurance",0],["Plate Valuation","gem","Finance & Insurance",0],["Become a Partner","users","Partner",0]];
+var st={tab:"home",cat:"All",q:"",svc:null,step:0,rate:0,hist:[],veh:"Honda Activa 6G · TN 58 XXXX · Petrol",tm:null};
+var VH=[{n:"Honda Activa 6G",p:"TN 58 XXXX",f:"Petrol"}],vi=0;function VS(){var x=VH[vi];return esc(x.n+" · "+x.p+" · "+x.f)}
+var v=document.getElementById("v"),nav=document.getElementById("nav");
+function $(h){v.innerHTML=h;v.scrollTop=0}
+function go(t){clearTimeout(st.tm);clearInterval(st.iv);st.tab=t;draw()}
+function pick(i){st.svc=S[i];st.tab=S[i][3]?"req":"info";draw()}
+function draw(){if(!gate())return;var t=["home","hist","acct"],n=["Home","Requests","Account"],k=["home","list","user"],hm=["cat","req","find","track","done","info"];
+nav.innerHTML=t.map(function(x,i){return '<button class="'+(st.tab==x||(x=="home"&&hm.indexOf(st.tab)>-1)?"on":"")+'" onclick="go(\''+x+'\')">'+sv(k[i])+n[i]+'</button>'}).join("");
+({home:home,req:req,find:find,track:track,done:done,info:info,hist:hist,cat:cat,acct:acct})[st.tab]()}
+var LOGO='<div class="logo" role="img" aria-label="BuddyMechanic logo"><svg viewBox="0 0 24 24"><path d="'+P.car+'"/><circle cx="19.5" cy="4.5" r="2.5" style="fill:#FF7A1A;stroke:none"/></svg></div>';
+var C=[["Emergency Roadside","tow","Puncture, towing, battery, fuel",1],["Repair & Maintenance","wrench","AC, oil, service, inspection",0],["Car Care & Parts","spark","Detailing, tinting, spare parts",0],["Buy, Sell & Rent","tag","Cars, bikes, plates, auctions",0],["Finance & Insurance","shield","Insurance, loans, valuation",0],["Shipping & Paperwork","ship","Shipping, movers, RTA",0]];
+function tiles(f){return S.map(function(s,i){return[s,i]}).filter(f).map(function(p){return '<button class="tile" onclick="pick('+p[1]+')">'+ic(p[0][1],p[0][2]=="Emergency Roadside")+p[0][0]+'</button>'}).join("")||'<small>No service found.</small>'}
+function hc(){var c=document.getElementById("hc");if(st.q){c.innerHTML='<div class="grid">'+tiles(function(p){return p[0][2]!="Partner"&&p[0][0].toLowerCase().indexOf(st.q.toLowerCase())>-1})+'</div>';return}
+c.innerHTML='<h2 style="margin-bottom:0">Service categories</h2><div class="cg">'+C.map(function(x,i){var n=S.filter(function(s){return s[2]==x[0]}).length;return '<button class="cc" onclick="st.cv='+i+';go(\'cat\')">'+ic(x[1],x[3])+'<div><b>'+x[0]+'</b><br><small>'+n+' services · '+x[2]+'</small></div></button>'}).join("")+'</div><button class="card row" style="width:100%;margin-top:12px;text-align:left" onclick="pick(31)"><span><b>Own a garage or tow truck?</b><br><small>Become a BuddyMechanic partner</small></span>'+ic("users")+'</button>'}
+function home(){
+$('<div class="row"><div><small>Hello, '+esc(fn())+'</small><div style="font-weight:800;font-size:17px">Anna Nagar, Madurai</div></div>'+LOGO+'</div>'+
+(st.act?'<button class="card" style="width:100%;margin-top:14px;text-align:left;border-color:var(--or);background:var(--ol)" onclick="go(\'track\')"><b>Partner is on the way</b><br><small>Tap to track on the map</small></button>':'')+
+'<div class="hero" style="margin-top:16px"><div style="font-size:12px;font-weight:700;opacity:.85">EMERGENCY ROADSIDE HELP</div><div style="font-size:24px;font-weight:800;margin:4px 0">Vehicle stuck?</div><div style="font-size:13px;opacity:.9">Nearest verified partner, matched in minutes.</div>'+
+'<div class="q">'+[1,2,3,4].map(function(i){return '<button onclick="pick('+i+')">'+ic(S[i][1],1)+S[i][0].replace(" Delivery","")+'</button>'}).join("")+'</div><button class="cta" onclick="pick(0)">Request help now</button></div>'+
+'<div class="srch">'+sv("search")+'<input placeholder="Search all services" aria-label="Search all services" value="'+esc(st.q)+'" oninput="st.q=this.value;hc()"></div><div id="hc"></div>');hc()}
+function cat(){var c=C[st.cv],n=S.filter(function(s){return s[2]==c[0]}).length;
+$('<button class="sec" onclick="go(\'home\')">Back</button><div class="row" style="justify-content:flex-start;margin-top:16px">'+ic(c[1],c[3])+'<div><div style="font-size:20px;font-weight:800">'+c[0]+'</div><small>'+n+' services</small></div></div><div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:16px">'+tiles(function(p){return p[0][2]==c[0]})+'</div>')}
+function req(){var s=st.svc;
+$('<div class="row" style="margin-top:4px">'+ic(s[1],1)+'<div style="flex:1;font-size:20px;font-weight:800">'+s[0]+'</div></div><div class="card" style="margin-top:14px"><small>Pickup location</small><div style="font-weight:700">Anna Nagar, Madurai (GPS)</div><label>Vehicle</label><div style="font-weight:700">'+VS()+'</div><label>Describe the problem (optional)</label><div class="f"><input placeholder="e.g. rear tyre flat"></div></div>'+
+'<div class="card row" style="margin-top:12px"><span>Estimated price</span><b style="font-size:22px;color:var(--blue)">₹'+s[3]+'</b></div><small style="display:block;margin:8px 0 16px">Sample price. Final amount is confirmed by the partner.</small><button class="pri" onclick="st.tab=\'find\';draw()">Find nearby partner</button>')}
+function find(){$('<div class="pulse"></div><div style="text-align:center;font-weight:800;font-size:18px">Finding nearest partner</div><div style="text-align:center;color:var(--mut);margin-top:6px">Checking availability and distance</div><button class="sec" style="display:block;margin:30px auto" onclick="go(\'home\')">Cancel</button>');
+st.tm=setTimeout(function(){st.p=0;st.ph=0;st.pt=0;st.act=true;st.tab="track";draw()},2200)}
+var RT=[[40,50],[40,130],[160,130],[160,210],[290,210]],TT=["Partner on the way","Partner arrived","Service in progress","Service completed"];
+function pos(t){var L=[],tot=0,i;for(i=0;i<4;i++){var d=Math.hypot(RT[i+1][0]-RT[i][0],RT[i+1][1]-RT[i][1]);L.push(d);tot+=d}var r=t*tot;for(i=0;i<4;i++){if(r<=L[i]||i==3){var f=Math.min(1,r/L[i]);return[RT[i][0]+(RT[i+1][0]-RT[i][0])*f,RT[i][1]+(RT[i+1][1]-RT[i][1])*f]}r-=L[i]}}
+function mapSvg(){var rd="";[50,130,210].forEach(function(y){rd+='<path d="M0 '+y+'H330" stroke="#D5DFF1" stroke-width="13"/><path d="M0 '+y+'H330" stroke="#fff" stroke-width="10"/>'});[40,160,290].forEach(function(x){rd+='<path d="M'+x+' 0V260" stroke="#D5DFF1" stroke-width="13"/><path d="M'+x+' 0V260" stroke="#fff" stroke-width="10"/>'});[90,170].forEach(function(y){rd+='<path d="M0 '+y+'H330" stroke="#fff" stroke-width="5"/>'});[100,225].forEach(function(x){rd+='<path d="M'+x+' 0V260" stroke="#fff" stroke-width="5"/>'});
+var pts=RT.map(function(q){return q.join(",")}).join(" ");
+return '<svg viewBox="0 0 330 260" role="img" aria-label="Map showing your location and the partner route"><rect width="330" height="260" fill="#EEF3FC"/><rect x="175" y="12" width="105" height="76" rx="8" fill="#DDEFE4"/><rect x="0" y="222" width="125" height="38" fill="#CFE0FA"/>'+rd+
+'<polyline points="'+pts+'" stroke="#fff" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/><polyline points="'+pts+'" stroke="#1D4ED8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>'+
+'<text x="190" y="54" font-size="9" fill="#5A6B8C" font-family="system-ui">Anna Nagar Park</text>'+
+'<circle class="ping" cx="290" cy="210" r="9" fill="#1D4ED8"/><circle cx="290" cy="210" r="8" fill="#1D4ED8" stroke="#fff" stroke-width="3"/><rect x="266" y="174" width="48" height="18" rx="9" fill="#0F2A5C"/><text x="290" y="187" font-size="10" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui">You</text>'+
+'<g id="pm" transform="translate(40,50)"><circle r="15" fill="#FF7A1A" stroke="#fff" stroke-width="3"/><g transform="translate(-7,-7) scale(.58)" stroke="#0F2A5C" stroke-width="2.2"><path d="'+P.car+'"/></g></g></svg>'}
+function upd(){var m=document.getElementById("pm");if(!m)return;var q=pos(st.p);m.setAttribute("transform","translate("+q[0]+","+q[1]+")");var e=Math.max(1,Math.ceil(8*(1-st.p)));
+document.getElementById("eta").textContent=st.ph==0?"Arriving in "+e+" min":TT[st.ph];document.getElementById("km").textContent=st.ph==0?(3.2*(1-st.p)).toFixed(1)+" km from your location":"At your location";
+document.querySelectorAll(".tl>div").forEach(function(d,i){d.classList.toggle("d",i<=st.ph+1)})}
+function tick(){if(st.ph==0){st.p=Math.min(1,st.p+0.2/14);if(st.p>=1){st.ph=1;st.pt=0}}else{st.pt+=0.2;if(st.ph==1&&st.pt>=2.5){st.ph=2;st.pt=0}else if(st.ph==2&&st.pt>=3){st.ph=3;st.pt=0}else if(st.ph==3&&st.pt>=1.2){clearInterval(st.iv);st.act=false;st.rate=0;st.tab="done";draw();return}}upd()}
+function track(){var L=["Request accepted"].concat(TT);
+$('<div class="map">'+mapSvg()+'</div><small id="gps" style="display:block;margin:8px 2px 0">Live location: your position and partner shown on the map (demo route)</small>'+
+'<div class="hero" style="margin-top:12px"><div style="font-size:12px;font-weight:700;opacity:.85">'+esc(st.svc[0]).toUpperCase()+' · DEMO REQUEST</div><div id="eta" style="font-size:22px;font-weight:800;margin-top:4px"></div><div id="km" style="font-size:13px;opacity:.9;margin-top:2px"></div></div>'+
+'<div class="card row" style="margin-top:12px"><div class="row">'+ic("user")+'<div><b>[Partner name]</b><br><small>Verified · sample</small></div></div><button class="sec">Call</button></div>'+
+'<div class="card tl" style="margin-top:12px">'+L.map(function(l){return '<div><span class="dot"></span>'+l+'</div>'}).join("")+'</div>'+
+'<div class="row" style="margin-top:12px"><button class="sec" style="flex:1">SOS support</button><button class="sec" style="flex:1" onclick="st.act=false;go(\'home\')">Cancel</button></div>');
+upd();st.iv=setInterval(tick,200);
+try{navigator.geolocation&&navigator.geolocation.getCurrentPosition(function(g){var e=document.getElementById("gps");if(e)e.textContent="Your GPS: "+g.coords.latitude.toFixed(4)+", "+g.coords.longitude.toFixed(4)+" (partner route is a demo)"},function(){})}catch(x){}}
+function done(){$('<h2 style="margin-top:8px">Service completed</h2><div class="card row"><span>'+st.svc[0]+'</span><b style="color:var(--blue)">₹'+st.svc[3]+'</b></div><h2>Rate your partner</h2><div class="stars">'+[1,2,3,4,5].map(function(i){return '<button aria-label="'+i+' stars" class="'+(i<=st.rate?"on":"")+'" onclick="st.rate='+i+';done()">★</button>'}).join("")+'</div><button class="pri" style="margin-top:20px" onclick="st.hist.unshift([st.svc[0],st.svc[3],st.rate]);go(\'hist\')">Submit</button>')}
+function info(){var s=st.svc;$('<div class="row" style="margin-top:4px">'+ic(s[1])+'<div style="font-size:20px;font-weight:800;flex:1">'+s[0]+'</div></div><div class="card" style="margin-top:14px">Listings, providers and forms for this '+s[2].toLowerCase()+' service arrive in the next build.</div><button class="pri" style="margin-top:14px" onclick="go(\'home\')">Back to services</button>')}
+function hist(){$('<h2 style="margin-top:4px">Your requests</h2>'+(st.hist.length?st.hist.map(function(h){return '<div class="card row" style="margin-bottom:8px"><div><b>'+h[0]+'</b><br><small>Rated '+h[2]+' of 5</small></div><b>₹'+h[1]+'</b></div>'}).join(""):'<div class="card">No requests yet. Try one from Home.</div>'))}
+function acct(){$('<h2 style="margin-top:4px">Account</h2><div class="card">Mobile OTP login, saved addresses, emergency contacts and payments arrive once the backend is connected.</div>')}
+
+var DB={},SES=null,OT=null,LG={e:"",m:"email",err:"",w:1},WS=0;
+try{DB=JSON.parse(localStorage.getItem("bm_users")||"{}");SES=localStorage.getItem("bm_ses")}catch(x){}
+if(!DB["demo@buddymechanic.in"])DB["demo@buddymechanic.in"]={name:"Demo User",phone:"9876543210",ec:""};
+function save(){try{localStorage.setItem("bm_users",JSON.stringify(DB));if(SES)localStorage.setItem("bm_ses",SES);else localStorage.removeItem("bm_ses")}catch(x){}}
+function esc(t){return String(t||"").replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function U(){return SES&&DB[SES]}
+function fn(){return U()&&U().name?U().name.split(" ")[0]:"driver"}
+function msg(t,ok){var e=document.getElementById("er");e.textContent=t;e.className="er"+(ok?" ok":"")}
+function gate(){if(!SES||!DB[SES]){SES=null;nav.innerHTML="";LG.w?welcome():(LG.m=="otp"&&OT?otp():login());return false}
+if(!DB[SES].phone){nav.innerHTML="";prof();return false}return true}
+function login(){$('<div style="text-align:center;margin-top:36px"><div class="ib" style="width:64px;height:64px;border-radius:20px;margin:0 auto 14px">'+sv("car")+'</div><div style="font-size:26px;font-weight:800">BuddyMechanic</div><div style="color:var(--mut);margin-top:6px">Your roadside assistance buddy</div></div><div class="card" style="margin-top:28px"><label style="margin-top:0">Email address</label><div class="f"><input id="em" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" value="'+esc(LG.e)+'"></div><div class="er" id="er">'+esc(LG.err)+'</div><button class="pri" onclick="sendOtp()">Send OTP</button></div><small style="display:block;text-align:center;margin-top:14px">We sign you in with a one-time code sent to your email. No password needed.</small>');LG.err=""}
+function sendOtp(r){var e=r?LG.e:document.getElementById("em").value.trim().toLowerCase();
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){msg("Enter a valid email address.");return}
+LG.e=e;OT={c:String(100000+Math.floor(Math.random()*900000)),t:Date.now(),n:0};LG.m="otp";otp()}
+function otp(){$('<button class="sec" onclick="LG.m=\'email\';login()">Back</button><h2 style="font-size:22px">Enter the code</h2><div style="color:var(--mut)">Code sent to <b>'+esc(LG.e)+'</b></div><div class="demo">Demo mode: no email is really sent. Your code is <b style="letter-spacing:2px">'+OT.c+'</b>. A live build delivers it to the inbox.</div><label>6-digit code</label><div class="f"><input id="oc" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="000000" style="letter-spacing:8px;font-size:22px;font-weight:800;text-align:center"></div><div class="er" id="er"></div><button class="pri" onclick="verify()">Verify and continue</button><div style="text-align:center;margin-top:14px"><button class="sec" onclick="sendOtp(1)">Resend code</button></div><small style="display:block;text-align:center;margin-top:12px">Code is valid for 5 minutes. 3 attempts allowed.</small>')}
+function verify(){var c=document.getElementById("oc").value.trim();
+if(Date.now()-OT.t>300000){LG.m="email";LG.err="Code expired. Request a new one.";login();return}
+if(c!==OT.c){OT.n++;if(OT.n>=3){LG.m="email";LG.err="Too many wrong attempts. Request a new code.";login();return}msg("Wrong code. "+(3-OT.n)+" tries left.");return}
+SES=LG.e;if(!DB[SES])DB[SES]={name:"",phone:"",ec:""};OT=null;LG.m="email";LG.e="";save();draw()}
+function prof(){$('<h2 style="font-size:22px;margin-top:20px">Complete your profile</h2><div style="color:var(--mut)">Add your mobile number to secure your account. It is linked once and cannot be used on another account.</div><div class="card" style="margin-top:14px"><label style="margin-top:0">Full name</label><div class="f"><input id="pn" placeholder="Your name" value="'+esc(DB[SES].name)+'"></div><label>Mobile number</label><div class="f row" style="justify-content:flex-start"><b>+91</b><input id="ph" inputmode="numeric" maxlength="10" placeholder="10-digit number"></div><div class="er" id="er"></div><button class="pri" onclick="savePh()">Save and continue</button></div><small style="display:block;margin-top:12px">Demo: 9876543210 is already registered, so you can test the duplicate check.</small>')}
+function savePh(){var n=document.getElementById("pn").value.trim(),p=document.getElementById("ph").value.trim();
+if(n.length<2){msg("Enter your full name.");return}
+if(!/^[6-9]\d{9}$/.test(p)){msg("Enter a valid 10-digit mobile number.");return}
+if(Object.keys(DB).some(function(k){return k!==SES&&DB[k].phone===p})){msg("This mobile number is already linked to another account.");return}
+DB[SES].name=n;DB[SES].phone=p;save();draw()}
+function acct(){var u=U(),ini=esc((u.name||"?").split(" ").map(function(w){return w[0]}).slice(0,2).join("").toUpperCase());
+$('<div class="hero" style="text-align:center"><div style="width:68px;height:68px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:24px;font-weight:800;margin:0 auto 10px">'+ini+'</div><div style="font-size:20px;font-weight:800">'+esc(u.name)+'</div><div style="opacity:.9;font-size:13px">'+esc(SES)+'</div></div>'+
+'<h2>Profile</h2><div class="card"><label style="margin-top:0">Full name</label><div class="f"><input id="an" value="'+esc(u.name)+'"></div><label>Email (verified, used to log in)</label><div class="f"><input value="'+esc(SES)+'" disabled></div><label>Mobile number (linked)</label><div class="f"><input value="+91 '+u.phone+'" disabled></div><small style="display:block;margin-top:8px">To change your number, contact support. One number belongs to one account only.</small></div>'+
+'<h2>Emergency contact</h2><div class="card"><div class="f row" style="justify-content:flex-start"><b>+91</b><input id="ae" inputmode="numeric" maxlength="10" placeholder="Contact mobile number" value="'+esc(u.ec)+'"></div><small style="display:block;margin-top:8px">Shared with trip details when you tap SOS.</small></div>'+
+'<div class="er" id="er"></div><button class="pri" onclick="saveAcct()">Save changes</button>'+
+'<h2>My Garage</h2>'+VH.map(function(x,i){return '<div class="card row" style="margin-bottom:8px">'+ic("car")+'<div style="flex:1"><b>'+esc(x.n)+'</b><br><small>'+esc(x.p)+' · '+esc(x.f)+(i==vi?' · Default':'')+'</small></div><div class="act">'+(i==vi?'':'<button class="sec sm" onclick="vi='+i+';acct()">Use</button>')+(VH.length>1?'<button class="sec sm" onclick="rmV('+i+')">Remove</button>':'')+'</div></div>'}).join("")+
+'<div class="card"><label style="margin-top:0">Add a vehicle</label><div class="f"><input id="vn" placeholder="Brand and model"></div><div class="f" style="margin-top:8px"><input id="vp" placeholder="Registration number"></div><div class="f" style="margin-top:8px"><select id="vf" aria-label="Fuel type"><option>Petrol</option><option>Diesel</option><option>CNG</option><option>EV</option></select></div><div class="er" id="er2"></div><button class="sec" style="width:100%" onclick="addV()">Add vehicle</button></div>'+
+'<h2>Activity</h2><div class="card row"><span>Completed requests</span><b>'+st.hist.length+'</b></div>'+
+'<button class="sec" style="width:100%;margin-top:18px" onclick="SES=null;save();draw()">Log out</button>')}
+function addV(){var n=document.getElementById("vn").value.trim(),pl=document.getElementById("vp").value.trim(),f=document.getElementById("vf").value,e=document.getElementById("er2");
+if(n.length<2||pl.length<4){e.textContent="Enter the model and registration number.";e.className="er";return}VH.push({n:n,p:pl.toUpperCase(),f:f});vi=VH.length-1;acct()}
+function rmV(i){VH.splice(i,1);if(vi>=VH.length)vi=0;else if(i<vi)vi--;acct()}
+function saveAcct(){var n=document.getElementById("an").value.trim(),c=document.getElementById("ae").value.trim();
+if(n.length<2){msg("Enter your full name.");return}
+if(c&&!/^[6-9]\d{9}$/.test(c)){msg("Enter a valid 10-digit contact number.");return}
+if(c&&c===U().phone){msg("Emergency contact must be a different number.");return}
+U().name=n;U().ec=c;save();msg("Changes saved.",1)}
+var WL=[["tow","Stuck on the road?","Request a mechanic, puncture repair, fuel or towing and get matched with the nearest partner."],["layers","Every vehicle service in one app","Roadside help, repairs, car care, buy and sell, insurance and more."],["pin","Track your help live","Watch your partner arrive on the map, then pay and rate the service."]];
+function welcome(){var w=WL[WS],last=WS==WL.length-1;
+$('<div style="min-height:calc(100vh - 40px);display:flex;flex-direction:column"><div class="row"><div class="row" style="justify-content:flex-start">'+LOGO+'<b style="font-size:17px">BuddyMechanic</b></div>'+(last?'<span></span>':'<button class="sec sm" onclick="LG.w=0;draw()">Skip</button>')+'</div>'+
+'<div class="wp"><i style="width:120px;height:120px;background:rgba(255,255,255,.1);top:-30px;right:-30px"></i><i style="width:70px;height:70px;background:#FF7A1A;bottom:24px;left:22px;opacity:.95"></i><i style="width:26px;height:26px;background:#fff;top:40px;left:50px;opacity:.6"></i><div class="big"><svg viewBox="0 0 24 24"><path d="'+P[w[0]]+'"/></svg></div></div>'+
+'<div style="text-align:center;margin-top:26px"><div style="font-size:26px;font-weight:800;line-height:1.2">'+w[1]+'</div><div style="color:var(--mut);margin-top:10px;line-height:1.5">'+w[2]+'</div></div>'+
+'<div style="flex:1"></div><div class="dots">'+WL.map(function(x,i){return '<b class="'+(i==WS?"on":"")+'"></b>'}).join("")+'</div><button class="pri" onclick="'+(last?'LG.w=0;WS=0;draw()':'WS++;welcome()')+'">'+(last?"Get started":"Next")+'</button></div>')}
+draw();
+</script></body></html>
